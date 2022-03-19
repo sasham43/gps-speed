@@ -10,14 +10,19 @@ export default function Speed(props){
 
     useEffect(() => {
         if(location?.coords && location.coords.speed){
-            setSpeed(Math.round(location.coords.speed))
+            let speed = location.coords.speed
+            if(speed > 0){
+                setSpeed(Math.round(location.coords.speed))
+            } else {
+                setSpeed(0)
+            }
         }
     }, [location])
 
     return (
         <SafeAreaView style={tailwind('bg-teal-400 h-full flex items-center justify-center')}>
         {/* <SafeAreaView style={styles.container}> */}
-            <Text style={tailwind('text-xl text-neutral-100')}>Speed {speed}</Text>
+            <Text style={tailwind('text-4xl text-neutral-100')}>Speed {speed}</Text>
             {/* <Text>
                 {JSON.stringify(location)}
             </Text> */}
