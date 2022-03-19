@@ -1,0 +1,13 @@
+{
+	"flex": {
+		"style": {
+			"display": "flex"
+		}
+	},
+	"text-teal-400": {
+		"style": {
+			"--tw-text-opacity": 1,
+			"color": "rgb(45 212 191 / var(--tw-text-opacity))"
+		}
+	}
+}
