@@ -2,7 +2,29 @@
   display: flex
 }
 
-.text-teal-400 {
+.h-full {
+  height: 100%
+}
+
+.items-center {
+  align-items: center
+}
+
+.justify-center {
+  justify-content: center
+}
+
+.bg-teal-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(45 212 191 / var(--tw-bg-opacity))
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+.text-neutral-100 {
   --tw-text-opacity: 1;
-  color: rgb(45 212 191 / var(--tw-text-opacity))
+  color: rgb(245 245 245 / var(--tw-text-opacity))
 }

@@ -12,11 +12,7 @@ export default function App() {
 
   return (
     <TailwindProvider utilities={utilities}>
-      <View style={styles.container}>
-        <Text>Slava Ukraina!</Text>
         <Speed />
-        <StatusBar style="auto" />
-      </View>
     </TailwindProvider>
   );
 }

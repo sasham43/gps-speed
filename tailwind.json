@@ -4,10 +4,37 @@
 			"display": "flex"
 		}
 	},
-	"text-teal-400": {
+	"h-full": {
+		"style": {
+			"height": "100%"
+		}
+	},
+	"items-center": {
+		"style": {
+			"alignItems": "center"
+		}
+	},
+	"justify-center": {
+		"style": {
+			"justifyContent": "center"
+		}
+	},
+	"bg-teal-400": {
+		"style": {
+			"--tw-bg-opacity": 1,
+			"backgroundColor": "rgb(45 212 191 / var(--tw-bg-opacity))"
+		}
+	},
+	"text-xl": {
+		"style": {
+			"fontSize": 20,
+			"lineHeight": 28
+		}
+	},
+	"text-neutral-100": {
 		"style": {
 			"--tw-text-opacity": 1,
-			"color": "rgb(45 212 191 / var(--tw-text-opacity))"
+			"color": "rgb(245 245 245 / var(--tw-text-opacity))"
 		}
 	}
 }

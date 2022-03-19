@@ -2,7 +2,7 @@ module.exports = {
   content: [
     './*.{js,jsx,ts,tsx}',
     './components/*.{js,jsx,ts,tsx}',
-    './components/Speed/*{js}',
+    './components/Speed/*.{html,js}',
 
     './components/**/*.{html,js}',
   ],
