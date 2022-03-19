@@ -7,7 +7,12 @@ module.exports = {
     './components/**/*.{html,js}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'pantone-352': 'rgb(153,229,178)',
+        'pantone-344': 'rgb(181,226,191)',
+      }
+    },
   },
   plugins: [],
   corePlugins: require('tailwind-rn/unsupported-core-plugins'),

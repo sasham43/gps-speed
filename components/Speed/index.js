@@ -20,7 +20,7 @@ export default function Speed(props){
     }, [location])
 
     return (
-        <SafeAreaView style={tailwind('bg-teal-400 h-full flex items-center justify-center')}>
+        <SafeAreaView style={tailwind('bg-pantone-352 h-full flex items-center justify-center')}>
         {/* <SafeAreaView style={styles.container}> */}
             <Text style={tailwind('text-4xl text-neutral-100')}>Speed {speed}</Text>
             {/* <Text>
