@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import {useTailwind} from 'tailwind-rn';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import Compass from '../Compass'
 // import SettingsButton from '../SettingsButton'
 // import SettingsScreen from '../SettingsScreen'
 import Settings from '../Settings'
+import SettingsContext from '../../SettingsContext'
 
 export default function Speed(props){
     const { location } = props
     const tailwind = useTailwind();
+    const settings = useContext(SettingsContext)
 
     
     function calculateMilesPerHour(meters_per_second){
@@ -44,7 +46,7 @@ export default function Speed(props){
     // }, [showSettings])
 
     return (
-        <SafeAreaView style={tailwind('bg-pantone-352 h-full flex items-center justify-center')}>
+        <SafeAreaView style={[tailwind('h-full flex items-center justify-center'), { backgroundColor: settings.bgColor}]}>
             <Settings location={location} />
             {/* <SettingsButton showSettings={showSettings} setShowSettings={setShowSettings} /> */}
             {/* <SettingsScreen location={location} showSettings={showSettings} setShowSettings={setShowSettings} /> */}

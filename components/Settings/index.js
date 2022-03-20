@@ -43,6 +43,7 @@ export default function Settings(props){
 
     function selectColor(color){
         console.log('color', color)
+        settings.setBgColor(color)
     }
     
     useEffect(() => {

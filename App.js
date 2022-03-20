@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {TailwindProvider} from 'tailwind-rn';
 import utilities from './tailwind.json';
@@ -51,11 +51,15 @@ export default function App() {
     text = JSON.stringify(location);
   }
 
+  const [bgColor, setBgColor] = useState('pantone-344')
+  const value = useMemo(
+    () => ({ bgColor, setBgColor }), 
+    [bgColor]
+  );
+
   return (
     <TailwindProvider utilities={utilities}>
-        <SettingsContext.Provider value={{
-          bg_color: 'pantone-344',
-        }}>
+        <SettingsContext.Provider value={value}>
           <Speed location={location} />
         </SettingsContext.Provider>
     </TailwindProvider>
