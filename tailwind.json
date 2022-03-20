@@ -1,4 +1,39 @@
 {
+	"absolute": {
+		"style": {
+			"position": "absolute"
+		}
+	},
+	"top-3": {
+		"style": {
+			"top": 12
+		}
+	},
+	"right-3": {
+		"style": {
+			"right": 12
+		}
+	},
+	"top-10": {
+		"style": {
+			"top": 40
+		}
+	},
+	"right-10": {
+		"style": {
+			"right": 40
+		}
+	},
+	"top-14": {
+		"style": {
+			"top": 56
+		}
+	},
+	"right-8": {
+		"style": {
+			"right": 32
+		}
+	},
 	"flex": {
 		"style": {
 			"display": "flex"

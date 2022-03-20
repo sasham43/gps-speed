@@ -20,15 +20,17 @@ export default function Compass(props){
 
     return (
         <>
-            <View style={styles.compass}>
-                {/* <Text>{heading}</Text> */}
-                <View style={[
-                    styles.indicator, 
-                    {
-                        transform: [{
-                                rotate: `${heading}deg`
-                        }]
-                    }]}></View>
+            <View style={tw(`absolute top-14 right-8`)}>
+                <View style={styles.compass}>
+                    {/* <Text>{heading}</Text> */}
+                    <View style={[
+                        styles.indicator, 
+                        { 
+                            transform: [{
+                                    rotate: `${heading}deg`
+                            }]
+                        }]}></View>
+                </View>
             </View>
         </>
     )
