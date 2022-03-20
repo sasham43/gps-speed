@@ -24,6 +24,16 @@ export default function App() {
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
     })();
+
+    async function getLocation(){
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    }
+
+    setInterval(getLocation, 1000)
+
+
+    return () => clearInterval(getLocation)
   }, []);
   let text = 'Waiting..';
   if (errorMsg) {
