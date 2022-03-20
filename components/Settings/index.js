@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 
-import { StyleSheet, Text, View, Animated, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Animated, TouchableOpacity, FlatList } from 'react-native';
 import { useTailwind } from 'tailwind-rn'
 // import SettingsButton from '../SettingsButton'
 // import SettingsScreen from '../SettingsScreen'
 import SettingsContext from '../../SettingsContext'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '../../tailwind.config.js'
+
+const fullConfig = resolveConfig(tailwindConfig)
 
 import { Octicons } from '@expo/vector-icons'
 
@@ -66,7 +70,95 @@ export default function Settings(props){
 
     }, [showSettings])
 
-    console.log('location', location)
+    function renderItem({item}){
+        console.log('render', item.color)
+        return (
+            <View style={tw(`flex flex-row`)}>
+                {
+                    item.color.map((color, color_index)=>{
+                        let blockStyle = {backgroundColor: item.css[color_index]}
+                        return (
+                            <TouchableOpacity style={[tw(`h-8 w-8`), blockStyle]} key={`${color}-${color_index}`}>
+                                
+                            </TouchableOpacity>
+                        )
+                    })
+                }
+            </View>
+        )
+    }
+
+    console.log('type',  fullConfig.theme.colors.pink['100'])
+
+    // let colorArray = new Array(fullConfig?.theme?.colors)
+
+    // let fullConfig = {
+    //     theme: {
+    //         colors: {
+    //             pink: {
+    //                 '100': 'value',
+    //                 '200': 'value',
+    //                 '300': 'value',
+    //                 '400': 'value',
+    //                 '500': 'value',
+    //                 '600': 'value',
+    //                 '700': 'value',
+    //                 '800': 'value',
+    //                 '900': 'value',
+    //             }
+    //         }
+    //     }
+    // }
+
+    const data = []
+
+    let counter = 0
+    for (let color in fullConfig?.theme?.colors){
+        let forbidden = [
+            'inherit',
+            'current',
+            'transparent'
+        ]
+        if(!forbidden.includes(color) ){
+
+            let colorArray = []
+            let cssArray = []
+            for(let num in fullConfig?.theme.colors[color]){
+                console.log('num', num)
+                colorArray.push(num)
+                cssArray.push(fullConfig?.theme.colors[color][num])
+            }
+
+
+
+            data.push({
+                id: counter,
+                color: colorArray,
+                css: cssArray,
+                name: color
+            })
+            counter++
+
+        }
+    }
+
+    // console.log('data', data)
+
+    // const data = fullConfig?.theme?.colors?.filter(color=>{
+    // const data = colorArray.filter(color=>{
+    //     return color != 'transparent' && color != 'inherit' && color != 'current'
+    // }).map((color, index) => {
+    //     console.log('a color', (color))
+    //     return {
+    //         id: index,
+    //         color: color
+    //     }
+    // })
+
+    // console.log('location', location)
+    // console.log('defaultTheme', Object.keys(defaultTheme.colors), defaultTheme.colors('neutral'))
+    // console.log('defaultTheme', JSON.stringify(defaultTheme.colors))
+    // console.log('defaultTheme', Object.keys(fullConfig.theme.colors))
 
     return (
         <>
@@ -102,7 +194,15 @@ export default function Settings(props){
                             </Text>
                         </View>
 
-                        <View style={tw('pt-4 pb-2')}>
+                        <View>
+                            <FlatList
+                                data={data}
+                                renderItem={renderItem}
+                                keyExtractor={item => item.id}
+                            ></FlatList>
+                        </View>
+
+                        {/* <View style={tw('pt-4 pb-2')}>
                             <Text style={tw('text-neutral-900 font-semibold text-center')}>
                                 Full Location Data
                             </Text>
@@ -141,7 +241,7 @@ export default function Settings(props){
                             <Text style={tw('text-neutral-900')}>
                                 Speed (meters / second): {location?.coords?.speed}
                             </Text>
-                        </View>
+                        </View> */}
                     </View>
                 </Animated.View>
             </View>
