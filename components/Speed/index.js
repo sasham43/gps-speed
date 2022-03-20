@@ -7,7 +7,16 @@ export default function Speed(props){
     const { location } = props
     const tailwind = useTailwind();
 
+    function calculateMilesPerHour(meters_per_second){
+        return meters_per_second * 2.237
+    }
+    function calculateKilometersPerHour(meters_per_second){
+        return meters_per_second * 3.6
+    }
+
     const [speed, setSpeed] = useState(0)
+    const [mph, setMph] = useState(0)
+    const [kph, setKph] = useState(0)
 
     useEffect(() => {
         if(location?.coords && location.coords.speed){
@@ -20,11 +29,41 @@ export default function Speed(props){
         }
     }, [location])
 
+    useEffect(() => {
+        setMph(calculateMilesPerHour(speed))
+        setKph(calculateKilometersPerHour(speed))
+    }, [speed])
+
     return (
         <SafeAreaView style={tailwind('bg-pantone-352 h-full flex items-center justify-center')}>
             <Compass location={location} />
-        {/* <SafeAreaView style={styles.container}> */}
-            <Text style={tailwind('text-4xl text-neutral-100')}>Speed {speed}</Text>
+            <Text style={tailwind('text-4xl text-neutral-100')}>
+                <View style={tailwind('flex flex-col justify-center items-center')}>
+                    <Text style={tailwind('text-8xl font-bold text-neutral-100')}>
+                        {speed} 
+                    </Text>
+                {/* </View>
+                <View style={tailwind('flex')}> */}
+                    <Text style={tailwind('text-4xl font-semibold text-neutral-100')}>
+                        MPH
+                    </Text>
+                </View>
+                
+            </Text>
+            <Text style={tailwind('text-2xl text-neutral-100')}>
+                <View style={tailwind('flex flex-col justify-center items-center pt-4')}>
+                    <Text style={tailwind('text-5xl font-bold text-neutral-100')}>
+                        {speed} 
+                    </Text>
+                {/* </View>
+                <View style={tailwind('flex')}> */}
+                    <Text style={tailwind('text-2xl font-semibold text-neutral-100')}>
+                        KM/H
+                    </Text>
+                </View>
+                
+            </Text>
+            {/* <Text style={tailwind('text-xl text-neutral-100')}>{speed} m/s</Text> */}
             {/* <Text>
                 {JSON.stringify(location)}
             </Text> */}
