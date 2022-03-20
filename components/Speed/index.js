@@ -45,11 +45,11 @@ export default function Speed(props){
 
     return (
         <SafeAreaView style={tailwind('bg-pantone-352 h-full flex items-center justify-center')}>
-            <Settings />
+            <Settings location={location} />
             {/* <SettingsButton showSettings={showSettings} setShowSettings={setShowSettings} /> */}
             {/* <SettingsScreen location={location} showSettings={showSettings} setShowSettings={setShowSettings} /> */}
             <Compass location={location} />
-            <Text style={tailwind('text-4xl text-neutral-100')}>
+            <View style={tailwind('z-20')}>
                 <View style={tailwind('flex flex-col justify-center items-center')}>
                     <Text style={tailwind('text-8xl font-bold text-neutral-100')}>
                         {mph} 
@@ -61,8 +61,8 @@ export default function Speed(props){
                     </Text>
                 </View>
                 
-            </Text>
-            <Text style={tailwind('text-2xl text-neutral-100')}>
+            </View>
+            <View style={tailwind('z-20')}>
                 <View style={tailwind('flex flex-col justify-center items-center pt-4')}>
                     <Text style={tailwind('text-5xl font-bold text-neutral-100')}>
                         {kph} 
@@ -74,7 +74,7 @@ export default function Speed(props){
                     </Text>
                 </View>
                 
-            </Text>
+            </View>
             {/* <Text style={tailwind('text-xl text-neutral-100')}>{speed} m/s</Text> */}
             {/* <Text>
                 {JSON.stringify(location)}

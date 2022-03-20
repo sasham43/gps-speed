@@ -39,6 +39,16 @@
 			"top": 112
 		}
 	},
+	"z-50": {
+		"style": {
+			"zIndex": 50
+		}
+	},
+	"z-20": {
+		"style": {
+			"zIndex": 20
+		}
+	},
 	"flex": {
 		"style": {
 			"display": "flex"
@@ -155,6 +165,11 @@
 	"pt-4": {
 		"style": {
 			"paddingTop": 16
+		}
+	},
+	"pb-2": {
+		"style": {
+			"paddingBottom": 8
 		}
 	},
 	"text-center": {

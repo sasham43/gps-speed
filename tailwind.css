@@ -30,6 +30,14 @@
   top: 7rem
 }
 
+.z-50 {
+  z-index: 50
+}
+
+.z-20 {
+  z-index: 20
+}
+
 .flex {
   display: flex
 }
@@ -111,6 +119,10 @@
 
 .pt-4 {
   padding-top: 1rem
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem
 }
 
 .text-center {

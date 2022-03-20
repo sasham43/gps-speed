@@ -9,11 +9,12 @@ import SettingsContext from '../../SettingsContext'
 import { Octicons } from '@expo/vector-icons'
 
 export default function Settings(props){
-    // const { showSettings } = props
+    const { location } = props
     const tw = useTailwind()
 
     const [showSettings, setShowSettings] = useState()
     const settings = useContext(SettingsContext)
+    const slideAnim = useRef(new Animated.Value(-2000)).current
 
 
     // const showSettings = useRef()
@@ -35,26 +36,14 @@ export default function Settings(props){
             openSettingsScreen()
         }
     }
-
-    // const [tx, setTx] = useState(-2000)
-
-    // useEffect(() => {
-    //     if(showSettings){
-    //         setTx(10)
-    //     } else {
-    //         setTx(-2000)
-    //     }
-    // }, [showSettings])
-    const slideAnim = useRef(new Animated.Value(-2000)).current
-
     
     useEffect(() => {
         const slideIn = () => {
             // Will change slideAnim value to 1 in 5 seconds
             Animated.timing(slideAnim, {
-            toValue: 25,
-            duration: 800,
-            useNativeDriver: true,
+                toValue: 25,
+                duration: 800,
+                useNativeDriver: true,
             }).start();
 
         };
@@ -62,34 +51,27 @@ export default function Settings(props){
         const slideOut = () => {
             // Will change slideAnim value to 0 in 3 seconds
             Animated.timing(slideAnim, {
-            toValue: -2000,
-            duration: 500,
-            useNativeDriver: true,
+                toValue: -2000,
+                duration: 500,
+                useNativeDriver: true,
             }).start();
 
         };
-        // if(showSettings === true){
-        //     tx.value = 10
-        // }
+
         if(showSettings === true){
             slideIn()
         } else {
             slideOut()
         }
-        // if(showSettings.current === true){
-        //     slideIn()
-        // } else {
-        //     slideOut()
-        // }
 
     }, [showSettings])
 
+    console.log('location', location)
+
     return (
         <>
-            <View style={tw('border border-neutral-100 absolute top-0 left-0')}>
-                {/* <Text>Settings</Text> */}
+            <View style={tw('border border-neutral-100 absolute top-0 left-0 z-50')}>
                 <TouchableOpacity style={tw('border-neutral-100 absolute top-14 left-8')} onPress={() => toggleSettingsScreen()}>
-                    {/* <Text style={tw('text-neutral-100 text-4xl')}>Settings</Text> */}
                     <Octicons name={'gear'} size={40} color={'white'} />
                 </TouchableOpacity>
             {/* <SettingsButton 
@@ -104,7 +86,7 @@ export default function Settings(props){
                 // setShowSettings={setShowSettings} 
             /> */}
                 <Animated.View style={[
-                    tw('border border-neutral-100 top-28 p-4 absolute bg-neutral-100 w-80 h-80 rounded-md'),
+                    tw('border border-neutral-100 top-28 p-4 absolute bg-neutral-100 w-80 h-80 rounded-md z-50'),
                     // style
                     {
                         transform: [{
@@ -114,9 +96,52 @@ export default function Settings(props){
                 ]}>
                     <Text style={tw('text-neutral-900 text-center font-bold text-lg')}>Settings</Text>
                     <View style={tw('pt-4')}>
-                        <Text style={tw('text-neutral-900')}>
-                            Background Color: {settings.bg_color}
-                        </Text>
+                        <View>
+                            <Text style={tw('text-neutral-900')}>
+                                Background Color: {settings.bg_color}
+                            </Text>
+                        </View>
+
+                        <View style={tw('pt-4 pb-2')}>
+                            <Text style={tw('text-neutral-900 font-semibold text-center')}>
+                                Full Location Data
+                            </Text>
+                        </View>
+                        <View>
+                            <Text style={tw('text-neutral-900')}>
+                                Accuracy: {location?.coords?.accuracy}
+                            </Text>
+                        </View>
+                        <View>
+                            <Text style={tw('text-neutral-900')}>
+                                Altitude: {location?.coords?.altitude}
+                            </Text>
+                        </View>
+                        <View>
+                            <Text style={tw('text-neutral-900')}>
+                                Altitude Accuracy: {location?.coords?.altitudeAccuracy}
+                            </Text>
+                        </View>
+                        <View>
+                            <Text style={tw('text-neutral-900')}>
+                                Heading: {location?.coords?.heading}
+                            </Text>
+                        </View>
+                        <View>
+                            <Text style={tw('text-neutral-900')}>
+                                Latitude: {location?.coords?.lat}
+                            </Text>
+                        </View>
+                        <View>
+                            <Text style={tw('text-neutral-900')}>
+                                Longitude: {location?.coords?.lon}
+                            </Text>
+                        </View>
+                        <View>
+                            <Text style={tw('text-neutral-900')}>
+                                Speed (meters / second): {location?.coords?.speed}
+                            </Text>
+                        </View>
                     </View>
                 </Animated.View>
             </View>
