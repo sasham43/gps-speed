@@ -6,15 +6,15 @@ export default function Compass(props){
     const { location } = props
     const tw = useTailwind()
 
-    const [heading, setHeading] = useState(0)
+    const [heading, setHeading] = useState(-45)
 
     useEffect(() => {
         if(location?.coords?.heading){
-            console.log('compass heading', location.coords.heading)
-                let heading = parseInt(location.coords.heading)
-                heading = heading > 0 ? heading - 45 : -45
-                // heading = heading - 45 // account for div being sideways
+            let heading = parseInt(location.coords.heading)
+            if(heading > 0){
+                heading = heading - 45 // account for div being sideways
                 setHeading(heading)
+            }
         }
     }, [location])
 
