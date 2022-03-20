@@ -7,6 +7,7 @@ export default function Compass(props){
     const tw = useTailwind()
 
     const [heading, setHeading] = useState(-45)
+    const [headingText, setHeadingText] = useState('N')
 
     useEffect(() => {
         if(location?.coords?.heading){
@@ -18,9 +19,71 @@ export default function Compass(props){
         }
     }, [location])
 
+    useEffect(() => {
+        let txt = ''
+        let fullHeading = heading > 0 ? heading : heading * -1
+        fullHeading += 45 // account for div being sideways
+
+        console.log('n', fullHeading >= 0 && fullHeading <= 45)
+        console.log('ne', fullHeading >= 46 && fullHeading <= 89)
+
+        if(fullHeading >= 0 && fullHeading <= 45){
+            txt = 'N'
+        } else if (fullHeading >= 46 && fullHeading <= 89){
+            txt = 'NE'
+        } else if (fullHeading >= 90 && fullHeading <= 124){
+            txt = 'E'
+        } else if (fullHeading >= 125 && fullHeading <= 179){
+            txt = 'SE'
+        } else if (fullHeading >= 180 && fullHeading <= 224){
+            txt = 'S'
+        } else if (fullHeading >= 225 && fullHeading <= 269){
+            txt = 'SW'
+        } else if (fullHeading >= 270 && fullHeading <= 314){
+            txt = 'W'
+        } else if (fullHeading >= 315 && fullHeading <= 360){
+            txt = 'NW'
+        }
+   
+        // switch(fullHeading){
+        //     case (fullHeading >= 0 && fullHeading <= 44):
+        //         console.log('should be here')
+        //         txt = 'N'
+        //         break;
+        //     case fullHeading >= 45 && fullHeading <= 89:
+        //         txt = 'NE'
+        //         break;
+        //     case fullHeading >= 90 && fullHeading <= 124:
+        //         txt = 'E'
+        //         break;
+        //     case fullHeading >= 125 && fullHeading <= 179:
+        //         txt = 'SE'
+        //         break;
+        //     case fullHeading >= 180 && fullHeading <= 224:
+        //         txt = 'S'
+        //         break;
+        //     case fullHeading >= 225 && fullHeading <= 269:
+        //         txt = 'SW'
+        //         break;
+        //     case fullHeading >= 270 && fullHeading <= 314:
+        //         txt = 'W'
+        //         break;
+        //     case fullHeading >= 315 && fullHeading <= 360:
+        //         txt = 'NW'
+        //         break;
+
+        // }
+        console.log('txt', txt, heading, fullHeading)
+
+        setHeadingText(txt)
+    }, [heading])
+
     return (
         <>
-            <View style={tw(`absolute top-14 right-8`)}>
+            <View style={tw('absolute top-14 right-8')}>
+                <View style={tw('flex justify-center w-full pb-4')}>
+                    <Text style={tw('text-neutral-100 text-center')}>{headingText}</Text>
+                </View> 
                 <View style={styles.compass}>
                     {/* <Text>{heading}</Text> */}
                     <View style={[

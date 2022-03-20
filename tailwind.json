@@ -54,6 +54,11 @@
 			"width": 16
 		}
 	},
+	"w-full": {
+		"style": {
+			"width": "100%"
+		}
+	},
 	"items-center": {
 		"style": {
 			"alignItems": "center"
@@ -93,6 +98,16 @@
 		"style": {
 			"--tw-bg-opacity": 1,
 			"backgroundColor": "rgb(153 229 178 / var(--tw-bg-opacity))"
+		}
+	},
+	"pb-4": {
+		"style": {
+			"paddingBottom": 16
+		}
+	},
+	"text-center": {
+		"style": {
+			"textAlign": "center"
 		}
 	},
 	"text-4xl": {

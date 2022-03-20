@@ -42,6 +42,10 @@
   width: 1rem
 }
 
+.w-full {
+  width: 100%
+}
+
 .items-center {
   align-items: center
 }
@@ -71,6 +75,14 @@
 .bg-pantone-352 {
   --tw-bg-opacity: 1;
   background-color: rgb(153 229 178 / var(--tw-bg-opacity))
+}
+
+.pb-4 {
+  padding-bottom: 1rem
+}
+
+.text-center {
+  text-align: center
 }
 
 .text-4xl {
