@@ -10,34 +10,6 @@
   right: 2rem
 }
 
-.top-4 {
-  top: 1rem
-}
-
-.left-2 {
-  left: 0.5rem
-}
-
-.left-8 {
-  left: 2rem
-}
-
-.top-1 {
-  top: 0.25rem
-}
-
-.top-2 {
-  top: 0.5rem
-}
-
-.top-px {
-  top: 1px
-}
-
-.left-px {
-  left: 1px
-}
-
 .top-0 {
   top: 0px
 }
@@ -46,16 +18,20 @@
   left: 0px
 }
 
+.left-8 {
+  left: 2rem
+}
+
+.top-20 {
+  top: 5rem
+}
+
 .flex {
   display: flex
 }
 
 .h-full {
   height: 100%
-}
-
-.h-80 {
-  height: 20rem
 }
 
 .w-full {
@@ -92,10 +68,6 @@
   padding: 10rem
 }
 
-.pb-2 {
-  padding-bottom: 0.5rem
-}
-
 .pt-2 {
   padding-top: 0.5rem
 }
@@ -125,15 +97,6 @@
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem
-}
-
-.text-6xl {
-  font-size: 4rem
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem
 }
 
 .text-5xl {

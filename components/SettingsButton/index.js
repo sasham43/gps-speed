@@ -9,11 +9,13 @@ export default function SettingsButton(props){
 
     function openSettingsScreen(){
         console.log('open')
-        setShowSettings(true)
+        // setShowSettings(true)
+        showSettings.current = true
     }
     function closeSettingsScreen(){
         console.log('close')
-        setShowSettings(false)
+        // setShowSettings(false)
+        showSettings.current = false
     }
     function toggleSettingsScreen(){
         console.log('toggle', showSettings)
