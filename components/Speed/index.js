@@ -46,19 +46,19 @@ export default function Speed(props){
     // }, [showSettings])
 
     return (
-        <SafeAreaView style={[tailwind('h-full flex items-center justify-center'), { backgroundColor: settings.bgColor}]}>
+        <SafeAreaView style={[tailwind('h-full flex items-center justify-center'), { backgroundColor: settings.bgColor, color: settings.textColor}]}>
             <Settings location={location} />
             {/* <SettingsButton showSettings={showSettings} setShowSettings={setShowSettings} /> */}
             {/* <SettingsScreen location={location} showSettings={showSettings} setShowSettings={setShowSettings} /> */}
             <Compass location={location} />
             <View style={tailwind('z-20')}>
                 <View style={tailwind('flex flex-col justify-center items-center')}>
-                    <Text style={tailwind('text-8xl font-bold text-neutral-100')}>
+                    <Text style={[tailwind('text-8xl font-bold'), {color: settings.textColor}]}>
                         {mph} 
                     </Text>
                 {/* </View>
                 <View style={tailwind('flex')}> */}
-                    <Text style={tailwind('text-4xl font-semibold text-neutral-100')}>
+                    <Text style={[tailwind('text-4xl font-semibold'), {color: settings.textColor}]}>
                         MPH
                     </Text>
                 </View>
@@ -66,12 +66,12 @@ export default function Speed(props){
             </View>
             <View style={tailwind('z-20')}>
                 <View style={tailwind('flex flex-col justify-center items-center pt-4')}>
-                    <Text style={tailwind('text-5xl font-bold text-neutral-100')}>
+                    <Text style={[tailwind('text-5xl font-bold'), {color: settings.textColor}]}>
                         {kph} 
                     </Text>
                 {/* </View>
                 <View style={tailwind('flex')}> */}
-                    <Text style={tailwind('text-2xl font-semibold text-neutral-100')}>
+                    <Text style={[tailwind('text-2xl font-semibold'), {color: settings.textColor}]}>
                         KM/H
                     </Text>
                 </View>

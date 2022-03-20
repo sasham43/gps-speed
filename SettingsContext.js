@@ -1,6 +1,7 @@
 import { createContext } from 'react'
 const SettingsContext = createContext({
-    bg_color: 'rgb(153,229,178)',
+    bgColor: 'rgb(153,229,178)',
+    textColor: '#F5F5F5',
     setBgColor: () => {}
 })
 export default SettingsContext

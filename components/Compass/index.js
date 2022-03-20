@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import {useTailwind} from 'tailwind-rn';
+import SettingsContext from '../../SettingsContext'
 
 export default function Compass(props){
     const { location } = props
     const tw = useTailwind()
+
+    const settings = useContext(SettingsContext)
 
     const [heading, setHeading] = useState(-45)
     const [headingText, setHeadingText] = useState('N')
@@ -51,17 +54,20 @@ export default function Compass(props){
     return (
         <>
             <View style={tw('absolute top-14 right-8')}>
-                <View style={styles.compass}>
-                    <View style={[
+                <View style={[styles.compass, {borderColor: settings.textColor}]}>
+                    <View 
+                        style={[
                         styles.indicator, 
                         { 
                             transform: [{
                                     rotate: `${heading}deg`
-                            }]
-                        }]}></View>
+                            }],
+                            borderColor: settings.textColor
+                        }]}
+                    ></View>
                 </View>
                 <View style={tw('flex justify-center w-full pt-2')}>
-                    <Text style={tw('text-neutral-100 text-xl font-bold text-center')}>{headingText}</Text>
+                    <Text style={[tw('text-neutral-100 text-xl font-bold text-center'), {color: settings.textColor}]}>{headingText}</Text>
                 </View> 
             </View>
         </>
