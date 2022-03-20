@@ -230,7 +230,25 @@ export default function Settings(props){
                             ></FlatList>
                         </View>
 
-                        {/* <View style={tw('pt-4 pb-2')}>
+                        <LocationValues location={location} />
+                    </View>
+                </Animated.View>
+            </View>
+        </>
+    )
+}
+
+function CompassIcon({ iconStyle }){
+    console.log('rerender', iconStyle)
+    return (
+        <Octicons name={'gear'} size={40} color={iconStyle.color} />
+    )
+}
+
+function LocationValues({location}){
+    return (
+        <>
+            {/* <View style={tw('pt-4 pb-2')}>
                             <Text style={tw('text-neutral-900 font-semibold text-center')}>
                                 Full Location Data
                             </Text>
@@ -270,21 +288,9 @@ export default function Settings(props){
                                 Speed (meters / second): {location?.coords?.speed}
                             </Text>
                         </View> */}
-                    </View>
-                </Animated.View>
-            </View>
         </>
     )
 }
-
-function CompassIcon({ iconStyle }){
-    console.log('rerender', iconStyle)
-    return (
-        <Octicons name={'gear'} size={40} color={iconStyle.color} />
-        // <Octicons name={'gear'} size={40} iconStyle={iconStyle} />
-    )
-}
-
 
 
 function pickTextColor(bgColor, lightColor, darkColor) {
