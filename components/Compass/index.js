@@ -10,11 +10,11 @@ export default function Compass(props){
 
     useEffect(() => {
         if(location?.coords?.heading){
-            if(location.coords.heading > 0){
-                setHeading(parseInt(location.coords.heading))
-            } else {
-                setHeading(0)
-            }
+            console.log('compass heading', location.coords.heading)
+                let heading = parseInt(location.coords.heading)
+                heading = heading > 0 ? heading - 45 : -45
+                // heading = heading - 45 // account for div being sideways
+                setHeading(heading)
         }
     }, [location])
 
