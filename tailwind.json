@@ -105,6 +105,16 @@
 			"paddingBottom": 16
 		}
 	},
+	"pb-2": {
+		"style": {
+			"paddingBottom": 8
+		}
+	},
+	"pb-3": {
+		"style": {
+			"paddingBottom": 12
+		}
+	},
 	"text-center": {
 		"style": {
 			"textAlign": "center"
@@ -114,6 +124,17 @@
 		"style": {
 			"fontSize": 36,
 			"lineHeight": 40
+		}
+	},
+	"text-xl": {
+		"style": {
+			"fontSize": 20,
+			"lineHeight": 28
+		}
+	},
+	"font-bold": {
+		"style": {
+			"fontWeight": "700"
 		}
 	},
 	"text-neutral-100": {
