@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {TailwindProvider} from 'tailwind-rn';
 import utilities from './tailwind.json';
 import Speed from './components/Speed'
 import * as Location from 'expo-location';
+import SettingsContext from './SettingsContext'
 
 export default function App() {
   // rgb(153,229,178) Pantone 352
@@ -13,6 +14,9 @@ export default function App() {
 
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+
+  // const SettingsContext = createContext()
+
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -49,7 +53,11 @@ export default function App() {
 
   return (
     <TailwindProvider utilities={utilities}>
-        <Speed location={location} />
+        <SettingsContext.Provider value={{
+          bg_color: 'pantone-344',
+        }}>
+          <Speed location={location} />
+        </SettingsContext.Provider>
     </TailwindProvider>
   );
 }

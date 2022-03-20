@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 
 import { StyleSheet, Text, View, Animated, TouchableOpacity } from 'react-native';
 import { useTailwind } from 'tailwind-rn'
-import SettingsButton from '../SettingsButton'
-import SettingsScreen from '../SettingsScreen'
+// import SettingsButton from '../SettingsButton'
+// import SettingsScreen from '../SettingsScreen'
+import SettingsContext from '../../SettingsContext'
 
 import { Octicons } from '@expo/vector-icons'
 
@@ -12,6 +13,9 @@ export default function Settings(props){
     const tw = useTailwind()
 
     const [showSettings, setShowSettings] = useState()
+    const settings = useContext(SettingsContext)
+
+
     // const showSettings = useRef()
     function openSettingsScreen(){
         console.log('open')
@@ -92,6 +96,9 @@ export default function Settings(props){
                 showSettings={showSettings} 
                 // setShowSettings={setShowSettings} 
             /> */}
+
+
+
             {/* <SettingsScreen 
                 showSettings={showSettings} 
                 // setShowSettings={setShowSettings} 
@@ -105,7 +112,12 @@ export default function Settings(props){
                         }]
                     }
                 ]}>
-                    <Text style={tw('text-neutral-900')}>Settings Screen</Text>
+                    <Text style={tw('text-neutral-900 text-center font-bold text-lg')}>Settings</Text>
+                    <View style={tw('pt-4')}>
+                        <Text style={tw('text-neutral-900')}>
+                            Background Color: {settings.bg_color}
+                        </Text>
+                    </View>
                 </Animated.View>
             </View>
         </>
