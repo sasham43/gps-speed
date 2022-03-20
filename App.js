@@ -21,13 +21,18 @@ export default function App() {
         return;
       }
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
+      // let location = await Location.getCurrentPositionAsync({});
+      // setLocation(location);
+      getLocation()
     })();
 
     async function getLocation(){
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
+      try {
+        let location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
+      } catch (e) {
+        console.log("Failed to get location:", e)
+      }
     }
 
     setInterval(getLocation, 1000)
