@@ -51,9 +51,6 @@ export default function Compass(props){
     return (
         <>
             <View style={tw('absolute top-14 right-8')}>
-                <View style={tw('flex justify-center w-full pb-2')}>
-                    <Text style={tw('text-neutral-100 text-xl font-bold text-center')}>{headingText}</Text>
-                </View> 
                 <View style={styles.compass}>
                     <View style={[
                         styles.indicator, 
@@ -63,6 +60,9 @@ export default function Compass(props){
                             }]
                         }]}></View>
                 </View>
+                <View style={tw('flex justify-center w-full pt-2')}>
+                    <Text style={tw('text-neutral-100 text-xl font-bold text-center')}>{headingText}</Text>
+                </View> 
             </View>
         </>
     )

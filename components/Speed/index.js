@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import {useTailwind} from 'tailwind-rn';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import Compass from '../Compass'
+import SettingsButton from '../SettingsButton'
+import SettingsScreen from '../SettingsScreen'
 
 export default function Speed(props){
     const { location } = props
@@ -36,6 +38,7 @@ export default function Speed(props){
 
     return (
         <SafeAreaView style={tailwind('bg-pantone-352 h-full flex items-center justify-center')}>
+            <SettingsButton location={location} />
             <Compass location={location} />
             <Text style={tailwind('text-4xl text-neutral-100')}>
                 <View style={tailwind('flex flex-col justify-center items-center')}>

@@ -10,6 +10,18 @@
   right: 2rem
 }
 
+.top-4 {
+  top: 1rem
+}
+
+.left-2 {
+  left: 0.5rem
+}
+
+.left-8 {
+  left: 2rem
+}
+
 .flex {
   display: flex
 }
@@ -32,6 +44,15 @@
 
 .justify-center {
   justify-content: center
+}
+
+.border {
+  border-width: 1px
+}
+
+.border-neutral-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(245 245 245 / var(--tw-border-opacity))
 }
 
 .bg-pantone-352 {
