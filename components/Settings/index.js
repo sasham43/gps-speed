@@ -18,27 +18,31 @@ export default function Settings(props){
 
     const [showSettings, setShowSettings] = useState()
     const settings = useContext(SettingsContext)
-    const slideAnim = useRef(new Animated.Value(-2000)).current
+    const slideAnim = useRef(new Animated.Value(-1000)).current
 
 
     // const showSettings = useRef()
     function openSettingsScreen(){
-        console.log('open')
+        // console.log('open')
         setShowSettings(true)
         // showSettings.current = true
     }
     function closeSettingsScreen(){
-        console.log('close')
+        // console.log('close')
         setShowSettings(false)
         // showSettings.current = false
     }
     function toggleSettingsScreen(){
-        console.log('toggle', showSettings)
+        // console.log('toggle', showSettings)
         if(showSettings) {
             closeSettingsScreen()
         } else {
             openSettingsScreen()
         }
+    }
+
+    function selectColor(color){
+        console.log('color', color)
     }
     
     useEffect(() => {
@@ -55,7 +59,7 @@ export default function Settings(props){
         const slideOut = () => {
             // Will change slideAnim value to 0 in 3 seconds
             Animated.timing(slideAnim, {
-                toValue: -2000,
+                toValue: -1000,
                 duration: 500,
                 useNativeDriver: true,
             }).start();
@@ -78,7 +82,7 @@ export default function Settings(props){
                     item.color.map((color, color_index)=>{
                         let blockStyle = {backgroundColor: item.css[color_index]}
                         return (
-                            <TouchableOpacity style={[tw(`h-8 w-8`), blockStyle]} key={`${color}-${color_index}`}>
+                            <TouchableOpacity onPress={() => selectColor(item.css[color_index])} style={[tw(`h-8 w-8`), blockStyle]} key={`${color}-${color_index}`}>
                                 
                             </TouchableOpacity>
                         )
@@ -187,12 +191,13 @@ export default function Settings(props){
                 // setShowSettings={setShowSettings} 
             /> */}
                 <Animated.View style={[
-                    tw('border border-neutral-100 top-28 p-4 absolute bg-neutral-100 w-80 h-80 rounded-md z-50'),
+                    tw('border border-neutral-100 top-32 p-4 absolute bg-neutral-100 w-80 rounded-md z-50 overflow-hidden'),
                     // style
                     {
                         transform: [{
                             translateX: slideAnim
-                        }]
+                        }],
+                        height: 650
                     }
                 ]}>
                     <Text style={tw('text-neutral-900 text-center font-bold text-lg')}>Settings</Text>

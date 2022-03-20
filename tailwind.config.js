@@ -17,6 +17,10 @@ module.exports = {
         '6xl': '4rem',
         '7xl': '5rem',
         '8xl': '5rem',
+      },
+      height: {
+        '120': '30rem',
+        '150': '40rem',
       }
     },
   },

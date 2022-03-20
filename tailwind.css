@@ -26,6 +26,10 @@
   top: 7rem
 }
 
+.top-32 {
+  top: 8rem
+}
+
 .z-50 {
   z-index: 50
 }
@@ -38,28 +42,32 @@
   display: flex
 }
 
-.h-80 {
-  height: 20rem
+.h-8 {
+  height: 2rem
+}
+
+.h-120 {
+  height: 30rem
 }
 
 .h-full {
   height: 100%
 }
 
-.h-8 {
-  height: 2rem
+.h-150 {
+  height: 40rem
 }
 
 .w-full {
   width: 100%
 }
 
-.w-80 {
-  width: 20rem
-}
-
 .w-8 {
   width: 2rem
+}
+
+.w-80 {
+  width: 20rem
 }
 
 .flex-row {
@@ -76,6 +84,10 @@
 
 .justify-center {
   justify-content: center
+}
+
+.overflow-hidden {
+  overflow: hidden
 }
 
 .rounded-md {
@@ -99,11 +111,6 @@
 .bg-pantone-352 {
   --tw-bg-opacity: 1;
   background-color: rgb(153 229 178 / var(--tw-bg-opacity))
-}
-
-.bg-rose-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 228 230 / var(--tw-bg-opacity))
 }
 
 .p-4 {
