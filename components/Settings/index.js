@@ -71,7 +71,7 @@ export default function Settings(props){
     }, [showSettings])
 
     function renderItem({item}){
-        console.log('render', item.color)
+        // console.log('render', item.color)
         return (
             <View style={tw(`flex flex-row`)}>
                 {
@@ -88,7 +88,13 @@ export default function Settings(props){
         )
     }
 
-    console.log('type',  fullConfig.theme.colors.pink['100'])
+    // console.log('type',  fullConfig.theme.colors.pink['100'])
+
+    const [colorData, setColorData] = useState([])
+
+    useEffect(() => {
+        setColorData(generateData())
+    }, [])
 
     // let colorArray = new Array(fullConfig?.theme?.colors)
 
@@ -109,37 +115,40 @@ export default function Settings(props){
     //         }
     //     }
     // }
+    function generateData(){
+        const data = []
 
-    const data = []
+        let counter = 0
+        for (let color in fullConfig?.theme?.colors){
+            let forbidden = [
+                'inherit',
+                'current',
+                'transparent'
+            ]
+            if(!forbidden.includes(color) ){
 
-    let counter = 0
-    for (let color in fullConfig?.theme?.colors){
-        let forbidden = [
-            'inherit',
-            'current',
-            'transparent'
-        ]
-        if(!forbidden.includes(color) ){
+                let colorArray = []
+                let cssArray = []
+                for(let num in fullConfig?.theme.colors[color]){
+                    // console.log('num', num)
+                    colorArray.push(num)
+                    cssArray.push(fullConfig?.theme.colors[color][num])
+                }
 
-            let colorArray = []
-            let cssArray = []
-            for(let num in fullConfig?.theme.colors[color]){
-                console.log('num', num)
-                colorArray.push(num)
-                cssArray.push(fullConfig?.theme.colors[color][num])
+
+
+                data.push({
+                    id: counter,
+                    color: colorArray,
+                    css: cssArray,
+                    name: color
+                })
+                counter++
+
             }
-
-
-
-            data.push({
-                id: counter,
-                color: colorArray,
-                css: cssArray,
-                name: color
-            })
-            counter++
-
         }
+
+        return data
     }
 
     // console.log('data', data)
@@ -196,7 +205,8 @@ export default function Settings(props){
 
                         <View>
                             <FlatList
-                                data={data}
+                                data={colorData}
+                                // data={data}
                                 renderItem={renderItem}
                                 keyExtractor={item => item.id}
                             ></FlatList>
