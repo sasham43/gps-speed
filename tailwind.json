@@ -9,6 +9,16 @@
 			"height": "100%"
 		}
 	},
+	"h-4": {
+		"style": {
+			"height": 16
+		}
+	},
+	"w-4": {
+		"style": {
+			"width": 16
+		}
+	},
 	"items-center": {
 		"style": {
 			"alignItems": "center"
@@ -17,6 +27,25 @@
 	"justify-center": {
 		"style": {
 			"justifyContent": "center"
+		}
+	},
+	"border-t": {
+		"style": {
+			"borderTopWidth": 1
+		}
+	},
+	"border-r": {
+		"style": {
+			"borderRightWidth": 1
+		}
+	},
+	"border-neutral-100": {
+		"style": {
+			"--tw-border-opacity": 1,
+			"borderTopColor": "rgb(245 245 245 / var(--tw-border-opacity))",
+			"borderRightColor": "rgb(245 245 245 / var(--tw-border-opacity))",
+			"borderBottomColor": "rgb(245 245 245 / var(--tw-border-opacity))",
+			"borderLeftColor": "rgb(245 245 245 / var(--tw-border-opacity))"
 		}
 	},
 	"bg-teal-400": {

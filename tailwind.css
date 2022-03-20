@@ -6,12 +6,33 @@
   height: 100%
 }
 
+.h-4 {
+  height: 1rem
+}
+
+.w-4 {
+  width: 1rem
+}
+
 .items-center {
   align-items: center
 }
 
 .justify-center {
   justify-content: center
+}
+
+.border-t {
+  border-top-width: 1px
+}
+
+.border-r {
+  border-right-width: 1px
+}
+
+.border-neutral-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(245 245 245 / var(--tw-border-opacity))
 }
 
 .bg-teal-400 {
