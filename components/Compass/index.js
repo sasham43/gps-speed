@@ -20,10 +20,10 @@ export default function Compass(props){
 
     return (
         <>
-            <View style={{}}>
-                <Text>{heading}</Text>
+            <View style={styles.compass}>
+                {/* <Text>{heading}</Text> */}
                 <View style={[
-                    styles.compass, 
+                    styles.indicator, 
                     {
                         transform: [{
                                 rotate: `${heading}deg`
@@ -35,11 +35,21 @@ export default function Compass(props){
 }
 
 const styles = StyleSheet.create({
-    compass: {
-        borderTopWidth: 1,
-        borderRightWidth: 1,
+    indicator: {
+        borderTopWidth: 3,
+        borderRightWidth: 3,
         borderColor: '#F5F5F5', // need better way of doing this
         height: 10,
         width: 10,
+    },
+    compass: {
+        width: 40,
+        height: 40,
+        borderRadius: 50,
+        borderWidth: 3,
+        borderColor: '#F5F5F5',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })
