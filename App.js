@@ -51,7 +51,7 @@ export default function App() {
     text = JSON.stringify(location);
   }
 
-  const [bgColor, setBgColor] = useState('pantone-344')
+  const [bgColor, setBgColor] = useState('rgb(153,229,178)')
   const value = useMemo(
     () => ({ bgColor, setBgColor }), 
     [bgColor]
