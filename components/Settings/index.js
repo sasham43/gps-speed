@@ -48,7 +48,7 @@ export default function Settings(props){
         const slideIn = () => {
             // Will change slideAnim value to 1 in 5 seconds
             Animated.timing(slideAnim, {
-            toValue: 10,
+            toValue: 25,
             duration: 800,
             useNativeDriver: true,
             }).start();
@@ -97,7 +97,7 @@ export default function Settings(props){
                 // setShowSettings={setShowSettings} 
             /> */}
                 <Animated.View style={[
-                    tw('border border-neutral-100 top-20 p-40 absolute'),
+                    tw('border border-neutral-100 top-28 p-4 absolute bg-neutral-100 w-80 h-80 rounded-md'),
                     // style
                     {
                         transform: [{
@@ -105,7 +105,7 @@ export default function Settings(props){
                         }]
                     }
                 ]}>
-                    <Text>Settings Screen</Text>
+                    <Text style={tw('text-neutral-900')}>Settings Screen</Text>
                 </Animated.View>
             </View>
         </>
