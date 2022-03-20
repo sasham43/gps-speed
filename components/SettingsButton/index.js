@@ -1,16 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useTailwind } from 'tailwind-rn'
 import { Octicons } from '@expo/vector-icons'
 
 export default function SettingsButton(props){
+    let { showSettings, setShowSettings } = props
     const tw = useTailwind()
+
+    function openSettingsScreen(){
+        console.log('open')
+        setShowSettings(true)
+    }
+    function closeSettingsScreen(){
+        console.log('close')
+        setShowSettings(false)
+    }
+    function toggleSettingsScreen(){
+        console.log('toggle', showSettings)
+        if(showSettings) {
+            openSettingsScreen()
+        } else {
+            closeSettingsScreen()
+        }
+    }
     return (
         <>
-            <View style={tw('border-neutral-100 absolute top-14 left-8')}>
+            <TouchableOpacity style={tw('border-neutral-100 absolute top-14 left-8')} onPress={() => toggleSettingsScreen()}>
                 {/* <Text style={tw('text-neutral-100 text-4xl')}>Settings</Text> */}
                 <Octicons name={'gear'} size={40} color={'white'} />
-            </View>
+            </TouchableOpacity>
         </>
     )
 }

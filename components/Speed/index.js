@@ -2,23 +2,26 @@ import { useState, useEffect } from 'react'
 import {useTailwind} from 'tailwind-rn';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import Compass from '../Compass'
-import SettingsButton from '../SettingsButton'
-import SettingsScreen from '../SettingsScreen'
+// import SettingsButton from '../SettingsButton'
+// import SettingsScreen from '../SettingsScreen'
+import Settings from '../Settings'
 
 export default function Speed(props){
     const { location } = props
     const tailwind = useTailwind();
 
+    
     function calculateMilesPerHour(meters_per_second){
-        return meters_per_second * 2.237
+        return parseInt(meters_per_second * 2.237)
     }
     function calculateKilometersPerHour(meters_per_second){
-        return meters_per_second * 3.6
+        return parseInt(meters_per_second * 3.6)
     }
-
+    
     const [speed, setSpeed] = useState(0)
     const [mph, setMph] = useState(0)
     const [kph, setKph] = useState(0)
+    // const [showSettings, setShowSettings] = useState()
 
     useEffect(() => {
         if(location?.coords && location.coords.speed){
@@ -36,14 +39,20 @@ export default function Speed(props){
         setKph(calculateKilometersPerHour(speed))
     }, [speed])
 
+    // useEffect(() => {
+    //     console.log('showSettings', showSettings)
+    // }, [showSettings])
+
     return (
         <SafeAreaView style={tailwind('bg-pantone-352 h-full flex items-center justify-center')}>
-            <SettingsButton location={location} />
+            <Settings />
+            {/* <SettingsButton showSettings={showSettings} setShowSettings={setShowSettings} /> */}
+            {/* <SettingsScreen location={location} showSettings={showSettings} setShowSettings={setShowSettings} /> */}
             <Compass location={location} />
             <Text style={tailwind('text-4xl text-neutral-100')}>
                 <View style={tailwind('flex flex-col justify-center items-center')}>
                     <Text style={tailwind('text-8xl font-bold text-neutral-100')}>
-                        {speed} 
+                        {mph} 
                     </Text>
                 {/* </View>
                 <View style={tailwind('flex')}> */}
@@ -56,7 +65,7 @@ export default function Speed(props){
             <Text style={tailwind('text-2xl text-neutral-100')}>
                 <View style={tailwind('flex flex-col justify-center items-center pt-4')}>
                     <Text style={tailwind('text-5xl font-bold text-neutral-100')}>
-                        {speed} 
+                        {kph} 
                     </Text>
                 {/* </View>
                 <View style={tailwind('flex')}> */}
