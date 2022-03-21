@@ -52,7 +52,7 @@ export default function App() {
   }
 
   const [bgColor, setBgColor] = useState('rgb(153,229,178)')
-  const [textColor, setTextColor] = useState('rgb(153,229,178)')
+  const [textColor, setTextColor] = useState('#F5F5F5')
   const value = useMemo(
     () => ({ bgColor, setBgColor, textColor, setTextColor }), 
     // () => ({ textColor, setTextColor }), 

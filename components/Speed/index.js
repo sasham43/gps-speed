@@ -44,6 +44,7 @@ export default function Speed(props){
     // useEffect(() => {
     //     console.log('showSettings', showSettings)
     // }, [showSettings])
+    console.log('settings', settings)
 
     return (
         <SafeAreaView style={[tailwind('h-full flex items-center justify-center'), { backgroundColor: settings.bgColor, color: settings.textColor}]}>

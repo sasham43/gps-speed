@@ -18,7 +18,7 @@ export default function Settings(props){
 
     const [showSettings, setShowSettings] = useState()
     const settings = useContext(SettingsContext)
-    let xValue = -400
+    let xValue = -350
     const slideAnim = useRef(new Animated.Value(xValue)).current
 
 
@@ -48,13 +48,6 @@ export default function Settings(props){
         let text_color = pickTextColor(color, '#F5F5F5', '#171717')
         // console.log('tx', text_color)
         settings.setTextColor(text_color)
-
-
-//   useEffect(() => {
-//     let text_color = pickTextColor(bgColor, '#F5F5F5', '#171717')
-//     console.log('tx', text_color)
-//     setTextColor(text_color)
-//   }, [bgColor])
     }
     
     useEffect(() => {
