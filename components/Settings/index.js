@@ -18,7 +18,8 @@ export default function Settings(props){
 
     const [showSettings, setShowSettings] = useState()
     const settings = useContext(SettingsContext)
-    const slideAnim = useRef(new Animated.Value(-1000)).current
+    let xValue = -400
+    const slideAnim = useRef(new Animated.Value(xValue)).current
 
 
     // const showSettings = useRef()
@@ -42,10 +43,10 @@ export default function Settings(props){
     }
 
     function selectColor(color){
-        console.log('color', color)
+        // console.log('color', color)
         settings.setBgColor(color)
         let text_color = pickTextColor(color, '#F5F5F5', '#171717')
-        console.log('tx', text_color)
+        // console.log('tx', text_color)
         settings.setTextColor(text_color)
 
 
@@ -70,7 +71,7 @@ export default function Settings(props){
         const slideOut = () => {
             // Will change slideAnim value to 0 in 3 seconds
             Animated.timing(slideAnim, {
-                toValue: -1000,
+                toValue: xValue,
                 duration: 500,
                 useNativeDriver: true,
             }).start();
@@ -165,31 +166,12 @@ export default function Settings(props){
 
         return data
     }
-
-    // console.log('data', data)
-
-    // const data = fullConfig?.theme?.colors?.filter(color=>{
-    // const data = colorArray.filter(color=>{
-    //     return color != 'transparent' && color != 'inherit' && color != 'current'
-    // }).map((color, index) => {
-    //     console.log('a color', (color))
-    //     return {
-    //         id: index,
-    //         color: color
-    //     }
-    // })
-
-    // console.log('location', location)
-    // console.log('defaultTheme', Object.keys(defaultTheme.colors), defaultTheme.colors('neutral'))
-    // console.log('defaultTheme', JSON.stringify(defaultTheme.colors))
-    // console.log('defaultTheme', Object.keys(fullConfig.theme.colors))
     let iconStyle = {color: settings.textColor}
 
     return (
         <>
             <View style={tw('border border-neutral-100 absolute top-0 left-0 z-50')}>
                 <TouchableOpacity style={tw('border-neutral-100 absolute top-14 left-8')} onPress={() => toggleSettingsScreen()}>
-                    {/* <Octicons name={'gear'} size={40} iconStyle={iconStyle} /> */}
                     <CompassIcon iconStyle={iconStyle} />
                 </TouchableOpacity>
             {/* <SettingsButton 
@@ -214,11 +196,14 @@ export default function Settings(props){
                     }
                 ]}>
                     <Text style={tw('text-neutral-900 text-center font-bold text-lg')}>Settings</Text>
-                    <View style={tw('pt-4')}>
-                        <View>
+                    <View style={tw('mt-4 border border-neutral-900 rounded h-12')}>
+                        <View style={tw('flex flex-row items-center justify-between pl-1 font-bold')}>
                             <Text style={tw('text-neutral-900')}>
-                                Background Color: {settings.bg_color}
+                                Background Color
                             </Text>
+                            <View style={[tw('rounded'), {backgroundColor: settings.bgColor, height: 46, width: 46}]}>
+                                <Octicons name={'pencil'} width={32} color={"black"} />
+                            </View>
                         </View>
 
                         <View>
