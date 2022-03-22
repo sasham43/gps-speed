@@ -21,20 +21,16 @@ export default function Settings(props){
     let xValue = -350
     const slideAnim = useRef(new Animated.Value(xValue)).current
 
+    // let yValue = 0
+    // const colorPickerAnim = useRef(new Animated.Value(yValue)).current
 
-    // const showSettings = useRef()
     function openSettingsScreen(){
-        // console.log('open')
         setShowSettings(true)
-        // showSettings.current = true
     }
     function closeSettingsScreen(){
-        // console.log('close')
         setShowSettings(false)
-        // showSettings.current = false
     }
     function toggleSettingsScreen(){
-        // console.log('toggle', showSettings)
         if(showSettings) {
             closeSettingsScreen()
         } else {
@@ -79,10 +75,13 @@ export default function Settings(props){
 
     }, [showSettings])
 
-    function renderItem({item}){
-        // console.log('render', item.color)
+    function renderItem({item, index}){
+        console.log('render', item.name, index)
         return (
-            <View style={tw(`flex flex-row`)}>
+            <View style={tw(`flex flex-row relative p-1 pl-0 rounded`)}>
+                <View style={tw('absolute top-3 z-40')}>
+                    <Text>{item.name}</Text>
+                </View>
                 {
                     item.color.map((color, color_index)=>{
                         let blockStyle = {backgroundColor: item.css[color_index]}
@@ -97,33 +96,39 @@ export default function Settings(props){
         )
     }
 
-    // console.log('type',  fullConfig.theme.colors.pink['100'])
-
     const [colorData, setColorData] = useState([])
+    const [showColorPicker, setShowColorPicker] = useState(false)
+
+    function toggleColorPicker(){
+        setShowColorPicker(!showColorPicker)
+    }
+    // const openColorPicker = () => {
+    //     console.log('we go')
+    //     Animated.timing(colorPickerAnim, {
+    //         toValue: 3,
+    //         duration: 800,
+    //         useNativeDriver: true,
+    //     }).start();
+    // };
+    // const closeColorPicker = () => {
+    //     Animated.timing(colorPickerAnim, {
+    //         toValue: 0,
+    //         duration: 800,
+    //         useNativeDriver: true,
+    //     }).start();
+    // };
 
     useEffect(() => {
         setColorData(generateData())
     }, [])
-
-    // let colorArray = new Array(fullConfig?.theme?.colors)
-
-    // let fullConfig = {
-    //     theme: {
-    //         colors: {
-    //             pink: {
-    //                 '100': 'value',
-    //                 '200': 'value',
-    //                 '300': 'value',
-    //                 '400': 'value',
-    //                 '500': 'value',
-    //                 '600': 'value',
-    //                 '700': 'value',
-    //                 '800': 'value',
-    //                 '900': 'value',
-    //             }
-    //         }
+    // useEffect(() => {
+    //     if(showColorPicker){
+    //         openColorPicker()
+    //     } else {
+    //         closeColorPicker()
     //     }
-    // }
+    // }, [showColorPicker])
+
     function generateData(){
         const data = []
 
@@ -132,9 +137,12 @@ export default function Settings(props){
             let forbidden = [
                 'inherit',
                 'current',
-                'transparent'
+                'transparent',
+                'black',
+                'white',
             ]
             if(!forbidden.includes(color) ){
+                console.log('color', color )
 
                 let colorArray = []
                 let cssArray = []
@@ -144,8 +152,6 @@ export default function Settings(props){
                     cssArray.push(fullConfig?.theme.colors[color][num])
                 }
 
-
-
                 data.push({
                     id: counter,
                     color: colorArray,
@@ -153,7 +159,6 @@ export default function Settings(props){
                     name: color
                 })
                 counter++
-
             }
         }
 
@@ -190,23 +195,29 @@ export default function Settings(props){
                 ]}>
                     <Text style={tw('text-neutral-900 text-center font-bold text-lg')}>Settings</Text>
                     <View style={tw('mt-4 border border-neutral-900 rounded h-12')}>
-                        <View style={tw('flex flex-row items-center justify-between pl-1 font-bold')}>
-                            <Text style={tw('text-neutral-900')}>
-                                Background Color
-                            </Text>
-                            <View style={[tw('rounded'), {backgroundColor: settings.bgColor, height: 46, width: 46}]}>
-                                <Octicons name={'pencil'} width={32} color={"black"} />
-                            </View>
-                        </View>
+                        <TouchableOpacity style={[tw('flex flex-row items-center justify-between pl-1 font-bold')]} onPress={() => toggleColorPicker()}>
+                            {/* <TouchableOpacity  onPress={() => toggleColorPicker()}> */}
+                                <Text style={tw('text-neutral-900')}>
+                                    Background Color
+                                </Text>
+                                <View style={[tw('rounded flex items-center justify-center'), {backgroundColor: settings.bgColor, height: 46, width: 46}]}>
+                                    <PencilIcon iconStyle={iconStyle} />
+                                </View>
+                            {/* </TouchableOpacity> */}
+                        </TouchableOpacity>
 
-                        <View>
-                            <FlatList
-                                data={colorData}
-                                // data={data}
-                                renderItem={renderItem}
-                                keyExtractor={item => item.id}
-                            ></FlatList>
-                        </View>
+                        {showColorPicker && 
+                            <Animated.View style={[tw('flex h-96 z-50') , 
+                                // { transform: [{scaleY: colorPickerAnim}]}
+                            ]}>
+                                <FlatList
+                                    data={colorData}
+                                    // data={data}
+                                    renderItem={renderItem}
+                                    keyExtractor={item => item.id}
+                                ></FlatList>
+                            </Animated.View>
+                        }
 
                         <LocationValues location={location} />
                     </View>
@@ -217,9 +228,15 @@ export default function Settings(props){
 }
 
 function CompassIcon({ iconStyle }){
-    console.log('rerender', iconStyle)
+    // console.log('rerender', iconStyle)
     return (
         <Octicons name={'gear'} size={40} color={iconStyle.color} />
+    )
+}
+function PencilIcon({ iconStyle }){
+    // console.log('rerender', iconStyle)
+    return (
+        <Octicons name={'pencil'} size={30} color={iconStyle.color} />
     )
 }
 

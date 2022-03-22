@@ -4,6 +4,11 @@
 			"position": "absolute"
 		}
 	},
+	"relative": {
+		"style": {
+			"position": "relative"
+		}
+	},
 	"top-14": {
 		"style": {
 			"top": 56
@@ -39,6 +44,21 @@
 			"top": 128
 		}
 	},
+	"top-2": {
+		"style": {
+			"top": 8
+		}
+	},
+	"top-px": {
+		"style": {
+			"top": 1
+		}
+	},
+	"top-3": {
+		"style": {
+			"top": 12
+		}
+	},
 	"z-50": {
 		"style": {
 			"zIndex": 50
@@ -47,6 +67,11 @@
 	"z-20": {
 		"style": {
 			"zIndex": 20
+		}
+	},
+	"z-40": {
+		"style": {
+			"zIndex": 40
 		}
 	},
 	"mt-4": {
@@ -87,6 +112,16 @@
 	"h-12": {
 		"style": {
 			"height": 48
+		}
+	},
+	"h-52": {
+		"style": {
+			"height": 208
+		}
+	},
+	"h-96": {
+		"style": {
+			"height": 384
 		}
 	},
 	"w-full": {
@@ -209,6 +244,14 @@
 			"paddingLeft": 160
 		}
 	},
+	"p-1": {
+		"style": {
+			"paddingTop": 4,
+			"paddingRight": 4,
+			"paddingBottom": 4,
+			"paddingLeft": 4
+		}
+	},
 	"pt-2": {
 		"style": {
 			"paddingTop": 8
@@ -227,6 +270,11 @@
 	"pl-1": {
 		"style": {
 			"paddingLeft": 4
+		}
+	},
+	"pl-0": {
+		"style": {
+			"paddingLeft": 0
 		}
 	},
 	"text-center": {
