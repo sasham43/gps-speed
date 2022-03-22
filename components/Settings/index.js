@@ -152,20 +152,16 @@ export default function Settings(props){
                     <Text style={tw('text-neutral-900 text-center font-bold text-lg')}>Settings</Text>
                     <View style={tw('mt-4 border border-neutral-900 rounded h-12')}>
                         <TouchableOpacity style={[tw('flex flex-row items-center justify-between pl-1 font-bold')]} onPress={() => toggleColorPicker()}>
-                            {/* <TouchableOpacity  onPress={() => toggleColorPicker()}> */}
                                 <Text style={tw('text-neutral-900')}>
                                     Background Color
                                 </Text>
                                 <View style={[tw('rounded flex items-center justify-center'), {backgroundColor: settings.bgColor, height: 46, width: 46}]}>
                                     <PencilIcon iconStyle={iconStyle} />
                                 </View>
-                            {/* </TouchableOpacity> */}
                         </TouchableOpacity>
 
                         {showColorPicker && 
-                            <Animated.View style={[tw('flex h-96 z-50') , 
-                                // { transform: [{scaleY: colorPickerAnim}]}
-                            ]}>
+                            <Animated.View style={[tw('flex h-96 z-50')]}>
                                 <FlatList
                                     data={colorData}
                                     renderItem={renderItem}
@@ -183,13 +179,11 @@ export default function Settings(props){
 }
 
 function CompassIcon({ iconStyle }){
-    // console.log('rerender', iconStyle)
     return (
         <Octicons name={'gear'} size={40} color={iconStyle.color} />
     )
 }
 function PencilIcon({ iconStyle }){
-    // console.log('rerender', iconStyle)
     return (
         <Octicons name={'pencil'} size={30} color={iconStyle.color} />
     )
