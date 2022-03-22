@@ -18,11 +18,9 @@ export default function Settings(props){
 
     const [showSettings, setShowSettings] = useState()
     const settings = useContext(SettingsContext)
+    
     let xValue = -350
     const slideAnim = useRef(new Animated.Value(xValue)).current
-
-    // let yValue = 0
-    // const colorPickerAnim = useRef(new Animated.Value(yValue)).current
 
     function openSettingsScreen(){
         setShowSettings(true)
@@ -37,18 +35,9 @@ export default function Settings(props){
             openSettingsScreen()
         }
     }
-
-    function selectColor(color){
-        // console.log('color', color)
-        settings.setBgColor(color)
-        let text_color = pickTextColor(color, '#F5F5F5', '#171717')
-        // console.log('tx', text_color)
-        settings.setTextColor(text_color)
-    }
     
     useEffect(() => {
         const slideIn = () => {
-            // Will change slideAnim value to 1 in 5 seconds
             Animated.timing(slideAnim, {
                 toValue: 25,
                 duration: 800,
@@ -58,7 +47,6 @@ export default function Settings(props){
         };
     
         const slideOut = () => {
-            // Will change slideAnim value to 0 in 3 seconds
             Animated.timing(slideAnim, {
                 toValue: xValue,
                 duration: 500,
@@ -76,7 +64,6 @@ export default function Settings(props){
     }, [showSettings])
 
     function renderItem({item, index}){
-        console.log('render', item.name, index)
         return (
             <View style={tw(`flex flex-row relative p-1 pl-0 rounded`)}>
                 <View style={tw('absolute top-3 z-40')}>
@@ -102,32 +89,15 @@ export default function Settings(props){
     function toggleColorPicker(){
         setShowColorPicker(!showColorPicker)
     }
-    // const openColorPicker = () => {
-    //     console.log('we go')
-    //     Animated.timing(colorPickerAnim, {
-    //         toValue: 3,
-    //         duration: 800,
-    //         useNativeDriver: true,
-    //     }).start();
-    // };
-    // const closeColorPicker = () => {
-    //     Animated.timing(colorPickerAnim, {
-    //         toValue: 0,
-    //         duration: 800,
-    //         useNativeDriver: true,
-    //     }).start();
-    // };
+    function selectColor(color){
+        settings.setBgColor(color)
+        let text_color = pickTextColor(color, '#F5F5F5', '#171717')
+        settings.setTextColor(text_color)
+    }
 
     useEffect(() => {
         setColorData(generateData())
     }, [])
-    // useEffect(() => {
-    //     if(showColorPicker){
-    //         openColorPicker()
-    //     } else {
-    //         closeColorPicker()
-    //     }
-    // }, [showColorPicker])
 
     function generateData(){
         const data = []
@@ -142,12 +112,9 @@ export default function Settings(props){
                 'white',
             ]
             if(!forbidden.includes(color) ){
-                console.log('color', color )
-
                 let colorArray = []
                 let cssArray = []
                 for(let num in fullConfig?.theme.colors[color]){
-                    // console.log('num', num)
                     colorArray.push(num)
                     cssArray.push(fullConfig?.theme.colors[color][num])
                 }
@@ -172,20 +139,9 @@ export default function Settings(props){
                 <TouchableOpacity style={tw('border-neutral-100 absolute top-14 left-8')} onPress={() => toggleSettingsScreen()}>
                     <CompassIcon iconStyle={iconStyle} />
                 </TouchableOpacity>
-            {/* <SettingsButton 
-                showSettings={showSettings} 
-                // setShowSettings={setShowSettings} 
-            /> */}
-
-
-
-            {/* <SettingsScreen 
-                showSettings={showSettings} 
-                // setShowSettings={setShowSettings} 
-            /> */}
+                
                 <Animated.View style={[
                     tw('border border-neutral-100 top-32 p-4 absolute bg-neutral-100 w-80 rounded-md z-50 overflow-hidden'),
-                    // style
                     {
                         transform: [{
                             translateX: slideAnim
@@ -212,7 +168,6 @@ export default function Settings(props){
                             ]}>
                                 <FlatList
                                     data={colorData}
-                                    // data={data}
                                     renderItem={renderItem}
                                     keyExtractor={item => item.id}
                                 ></FlatList>
