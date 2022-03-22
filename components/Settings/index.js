@@ -71,9 +71,10 @@ export default function Settings(props){
                 </View>
                 {
                     item.color.map((color, color_index)=>{
-                        let blockStyle = {backgroundColor: item.css[color_index]}
+                        let bgColor = item.name.includes('pantone') ? item.css.join('') : item.css[color_index]
+                        let blockStyle = {backgroundColor: bgColor}
                         return (
-                            <TouchableOpacity onPress={() => selectColor(item.css[color_index])} style={[tw(`h-8 w-8`), blockStyle]} key={`${color}-${color_index}`}>
+                            <TouchableOpacity onPress={() => selectColor(bgColor)} style={[tw(`h-8 w-8`), blockStyle]} key={`${color}-${color_index}`}>
                                 
                             </TouchableOpacity>
                         )
